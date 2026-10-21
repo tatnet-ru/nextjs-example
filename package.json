@@ -1,0 +1,28 @@
+{
+  "name": "tatnet-nextjs-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -H 0.0.0.0",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.0",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "bun@1.4.0"
+}
