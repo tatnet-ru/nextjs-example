@@ -1,0 +1,33 @@
+name: Dependency audit
+
+on:
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'package.json'
+      - '**/package.json'
+      - 'bun.lock'
+      - '.github/workflows/dependency-audit.yml'
+  push:
+    branches: ['main']
+    paths:
+      - 'package.json'
+      - '**/package.json'
+      - 'bun.lock'
+      - '.github/workflows/dependency-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Bun lockfile audit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.0'
+      # Audit resolved transitives: GitHub's manifest-only graph omits them.
+      - run: bun audit
